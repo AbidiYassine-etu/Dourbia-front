@@ -1,5 +1,4 @@
 'use client'
-import Image from "next/image";
 import Carousel from "./components/Carousel";
 import About from "./components/About";
 import Features from "./components/Feature";

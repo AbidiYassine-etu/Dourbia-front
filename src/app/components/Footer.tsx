@@ -6,7 +6,7 @@ export default function Footer() {
             <div>
               <h3 className="text-xl font-bold mb-4">DOURBIA</h3>
               <p className="text-gray-400">
-                Let's Discover Tunisia Together .
+                Lets Discover Tunisia Together .
               </p>
             </div>
             <div>
