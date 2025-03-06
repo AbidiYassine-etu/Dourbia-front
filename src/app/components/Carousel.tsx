@@ -1,24 +1,23 @@
 'use client'
 import { useState } from 'react';
 import styles from '@/app/Carousel.module.css';
-import Image from 'next/image';
 
 const Carousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const items = [
     {
-      image: '/img/carousel-1.jpg',
-      alt: 'Discover Tunisia',
-      title: "Let's Discover Tunisia Together",
-      subtitle: 'DOURBIA'
+      video: '/video/test.mp4',
+      alt: '**',
+      title: "**",
+      subtitle: '**'
     },
     {
-      image: '/img/carousel-2.jpg',
-      alt: 'Amazing Places',
-      title: 'Discover Amazing Places With Us In Tunisia',
-      subtitle: 'DORUBIA'
-    }
+      video: '/video/test.mp4',
+      alt: '**',
+      title: "**",
+      subtitle: '**'
+    },
   ];
 
   const handlePrev = () => {
@@ -39,14 +38,17 @@ const Carousel = () => {
               index === activeIndex ? styles.active : ''
             }`}
           >
-            <div className={styles.imageContainer}>
-              <Image
-                src={item.image}
-                alt={item.alt}
-                layout="fill"
-                objectFit="cover"
-                priority
-              />
+            <div className={styles.videoContainer}>
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+              >
+                <source src={item.video} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
             <div className={styles.carouselCaption}>
               <div className={styles.captionContent}>

@@ -12,6 +12,7 @@ export default function Header() {
     { name: 'Tours', path: '/tours' },
     { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' },
+    { name: 'Signup', path:'/signup'},
   ]
 
   return (
