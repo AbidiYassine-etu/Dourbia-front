@@ -1,11 +1,13 @@
 .container {
   width: 100%;
   position: relative;
+  padding-top: 5rem;
+  padding-bottom: 10px;
 }
 
 .carousel {
   position: relative;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   overflow: hidden;
   height: 80vh;
@@ -14,46 +16,85 @@
 .carouselItem {
   position: relative;
   display: none;
-  width: 100%; 
+  width: 100%;
   height: 80vh;
   transition: opacity 0.6s ease;
 }
 
 .carouselItem.active {
-  display: flex; 
-  justify-content: center;
-  align-items: center;
+  display: block;
   opacity: 1;
 }
 
-.videoContainer {
+.imageContainer {
   position: relative;
-  width: 80%; 
-  height: 70%;
-  max-width: 1200px;
-  border-radius: 15px; 
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-
-.videoContainer video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
-  object-fit: cover;
 }
 
 .carouselCaption {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  font-size: 1.2rem;
+  transform: translateX(-50%);
   text-align: center;
   width: 100%;
   color: white;
+  z-index: 2;
+}
+
+.centeredButton {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem 2rem;
+  background-color: #60D8F4;
+  color: #0b0101;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  z-index: 2;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.centeredButton:hover {
+  background-color: #fff;
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+
+.carouselDots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.dot {
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.activeDot {
+  background-color: rgba(255, 255, 255, 0.9);
+  transform: scale(1.2);
+}
+
+.dot:hover {
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .controlPrev,
@@ -64,42 +105,4 @@
   background: none;
   border: none;
   cursor: pointer;
-}
-
-.controlPrev {
-  left: 5px;
-}
-
-.controlNext {
-  right: 5px;
-}
-
-.controlButton {
-  background-color: rgba(0, 0, 0, 0.5);
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.controlIconPrev::before {
-  content: '';
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border-left: 3px solid white;
-  border-bottom: 3px solid white;
-  transform: rotate(45deg);
-}
-
-.controlIconNext::before {
-  content: '';
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border-right: 3px solid white;
-  border-top: 3px solid white;
-  transform: rotate(45deg);
 }

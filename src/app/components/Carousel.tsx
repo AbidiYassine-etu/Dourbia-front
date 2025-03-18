@@ -1,23 +1,47 @@
 'use client'
 import { useState } from 'react';
 import styles from '@/app/Carousel.module.css';
+import Image from 'next/image';
 
 const Carousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const items = [
     {
-      video: '/video/test.mp4',
-      alt: '**',
-      title: "**",
-      subtitle: '**'
+      image: '/img/carousel-1.png',
+      alt: 'Dourbia',
+      title: "Dourbia",
+      subtitle: "Vos expériences culturelles à la carte ",
+      buttonText: 'Explore More'
     },
     {
-      video: '/video/test.mp4',
+      image: '/img/carousel-2.png',
       alt: '**',
-      title: "**",
-      subtitle: '**'
+      title: '**',
+      subtitle: '**',
+      buttonText: 'Learn More'
     },
+    {
+      image: '/img/carousel-3.png',
+      alt: '**',
+      title: '**',
+      subtitle: '**',
+      buttonText: 'Book Now'
+    },
+    {
+      image: '/img/carousel-4.png',
+      alt: '**',
+      title: '**',
+      subtitle: '**',
+      buttonText: 'View Details'
+    },
+    {
+      image: '/img/carousel-5.png',
+      alt: '**',
+      title: '**',
+      subtitle: '**',
+      buttonText: 'View Details'
+    }
   ];
 
   const handlePrev = () => {
@@ -38,28 +62,41 @@ const Carousel = () => {
               index === activeIndex ? styles.active : ''
             }`}
           >
-            <div className={styles.videoContainer}>
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="auto"
-              >
-                <source src={item.video} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+            <div className={styles.imageContainer}>
+              <Image
+                src={item.image}
+                alt={item.alt}
+                layout="fill"
+                objectFit="cover"
+                priority
+              />
             </div>
             <div className={styles.carouselCaption}>
               <div className={styles.captionContent}>
-                <h4 className={styles.subtitle}>{item.subtitle}</h4>
-                <h1 className={styles.title}>{item.title}</h1>
-                <button className={styles.bookButton}>Book Now</button>
+                <h4 className={styles.title}>{item.title}</h4>
+                <h1 className={styles.subtitle}>{item.subtitle}</h1>
               </div>
             </div>
+            <button className={styles.centeredButton}>
+              {item.buttonText}
+            </button>
           </div>
         ))}
 
+        {/* Navigation Dots */}
+        <div className={styles.carouselDots}>
+          {items.map((_, index) => (
+            <button
+              key={index}
+              className={`${styles.dot} ${
+                index === activeIndex ? styles.activeDot : ''
+              }`}
+              onClick={() => setActiveIndex(index)}
+            />
+          ))}
+        </div>
+
+        {/* Navigation Arrows */}
         <button
           className={styles.controlPrev}
           onClick={handlePrev}

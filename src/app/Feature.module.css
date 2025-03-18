@@ -1,76 +1,72 @@
 .featuresSection {
-    width: 100%;
-    padding: 5rem 0;
-    background: #fff;
-  }
-  
-  .container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-  
+  padding: 4rem 0;
+  background: #f8f9fa;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.featuresGrid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.featureItem {
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.featureContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.iconContainer {
+  margin-bottom: 1rem;
+}
+
+.featureIcon {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.featureTitle {
+  font-size: 1.5rem;
+  color: #E55934;
+  margin: 0;
+}
+
+.featureText {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
   .featuresGrid {
-    display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
   }
   
   .featureItem {
-    margin-bottom: 1.5rem;
-  }
-  
-  .featureContent {
-    display: flex;
-    align-items: flex-start;
-    gap: 1.5rem;
-  }
-  
-  .iconContainer {
-    flex-shrink: 0;
-    width: 100px;
-    height: 100px;
-    background-color: #4a90e2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-  }
-  
-  .icon {
-    color: white;
-  }
-  
-  .textContainer {
-    flex: 1;
+    padding: 1.5rem;
   }
   
   .featureTitle {
     font-size: 1.25rem;
-    margin-bottom: 0.75rem;
-    color: #2d3748;
   }
-  
-  .featureText {
-    color: #718096;
-    line-height: 1.6;
-    margin: 0;
-  }
-  
-  @media (min-width: 768px) {
-    .featuresGrid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3rem;
-    }
-  
-    .featureItem {
-      margin-bottom: 0;
-    }
-  }
-  
-  @media (min-width: 992px) {
-    .featuresGrid {
-      gap: 4rem;
-    }
-  }
+}
