@@ -12,14 +12,24 @@
 .header {
   text-align: center;
   margin-bottom: 3rem;
+  color: #8F8F8F;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  text-transform: capitalize;
 }
 
 .subtitle {
+  margin-bottom: 4.5rem;
   color: #60D8F4;
+  font-size: 25px;
+  letter-spacing: 5px;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 0.875rem;
-  margin-bottom: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  font-family: 'Inter';
 }
 
 .title {
@@ -57,7 +67,7 @@
 
 .imageContainer {
   position: relative;
-  height: 250px;
+  height: 400px;
   width: 100%;
 }
 
@@ -74,8 +84,9 @@
 }
 
 .packageTitle {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   color: #002863;
+  text-transform: uppercase;
   margin-bottom: 0.5rem;
 }
 
@@ -114,7 +125,7 @@
 }
 
 .stars {
-  color: #0b0a00;
+  color: #FA7921;
   display: flex;
   gap: 0.1rem;
 }
@@ -174,7 +185,7 @@
 .viewMoreButton {
   background: #FA7921;
   color: white;
-  padding: 1rem 2.5rem;
+  padding: 0.2rem 2.5rem;
   border: none;
   border-radius: 2.5rem;
   font-size: 0.8rem;

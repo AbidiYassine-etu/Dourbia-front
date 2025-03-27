@@ -11,36 +11,66 @@ const Carousel = () => {
       image: '/img/carousel-1.png',
       alt: 'Dourbia',
       title: "Dourbia",
-      subtitle: "Vos expériences culturelles à la carte ",
-      buttonText: 'Explore More'
+      subtitle: (
+        <>
+          Vos expériences culturelles
+          <br />
+          à la carte
+        </>
+      ),
+      buttonText: 'Réserver maintenant'
     },
     {
       image: '/img/carousel-2.png',
       alt: '**',
-      title: '**',
-      subtitle: '**',
-      buttonText: 'Learn More'
+      title: "Dourbia",
+      subtitle: (
+        <>
+          Vos expériences culturelles
+          <br />
+          à la carte
+        </>
+      ),
+      buttonText: 'Réserver maintenant'
     },
     {
       image: '/img/carousel-3.png',
       alt: '**',
-      title: '**',
-      subtitle: '**',
-      buttonText: 'Book Now'
+      title: "Dourbia",
+      subtitle: (
+        <>
+          Vos expériences culturelles
+          <br />
+          à la carte
+        </>
+      ),
+      buttonText: 'Réserver maintenant'
     },
     {
       image: '/img/carousel-4.png',
       alt: '**',
-      title: '**',
-      subtitle: '**',
-      buttonText: 'View Details'
+      title: "Dourbia",
+      subtitle: (
+        <>
+          Vos expériences culturelles
+          <br />
+          à la carte
+        </>
+      ),
+      buttonText: 'Réserver maintenant'
     },
     {
       image: '/img/carousel-5.png',
       alt: '**',
-      title: '**',
-      subtitle: '**',
-      buttonText: 'View Details'
+      title: "Dourbia",
+      subtitle: (
+        <>
+          Vos expériences culturelles
+          <br />
+          à la carte
+        </>
+      ),
+      buttonText: 'Réserver maintenant'
     }
   ];
 

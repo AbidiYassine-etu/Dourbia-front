@@ -7,24 +7,77 @@ import { faStar, faStarHalfAlt, faArrowRight } from '@fortawesome/free-solid-svg
 const Packages = () => {
   const packages = [
     {
-      image: '/img/package-2.jpg',
-      location: 'Bali, Indonesia',
-      title: 'Tropical Paradise Getaway',
-      description: 'Experience pristine beaches and lush jungles in this tropical paradise',
+      image: '/img/package-1.png',
+      title:(
+        <>
+        Pack Visiteur 
+        <br/> Démi Journée
+        </>
+      ) ,
+      altText: "Pack Visiteur Journée Complète", // Add string alternative
       rating: 4,
-      reviews: 345,
-      price: 899
+      price: 160
     },
-    // ... keep all other package objects the same
     {
-      image: '/img/package-2.jpg',
-      location: 'Maldives',
-      title: 'Luxury Island Retreat',
-      description: 'Private villas and crystal-clear waters in paradise',
+      image: '/img/package-2.png',
+      title: (
+        <>
+        Pack Visiteur 
+        <br/>Journée Compléte  
+        </>
+      ),
+      altText: "Pack Visiteur Journée Complète", // Add string alternative
       rating: 4.2,
-      reviews: 432,
-      price: 2499
-    }
+      price: 60
+    },
+    {
+      image: '/img/package-3.png',
+      title:(
+        <>
+        Pack team building
+        <br/> l'ére du numérique
+        </>
+      ) ,
+      altText: "Pack Visiteur Journée Complète", // Add string alternative
+      rating: 4.2,
+      price: 120
+    },
+    {
+      image: '/img/package-3.png',
+      title:(
+        <>
+        Pack Visiteur 
+        <br/> Démi Journée
+        </>
+      ) ,
+      altText: "Pack Visiteur Journée Complète", // Add string alternative
+      rating: 4.2,
+      price: 55
+    },
+    {
+      image: '/img/package-3.png',
+      title:(
+        <>
+        Pack Visiteur 
+        <br/> Démi Journée
+        </>
+      ) ,
+      altText: "Pack Visiteur Journée Complète", // Add string alternative
+      rating: 4.2,
+      price: 80
+    },
+    {
+      image: '/img/package-3.png',
+      title:(
+        <>
+        Pack Visiteur 
+        <br/> Démi Journée
+        </>
+      ) ,
+      altText: "Pack Visiteur Journée Complète", // Add string alternative
+      rating: 4.2,
+      price: 150
+    },
   ];
 
   const renderStars = (rating: number) => {
@@ -72,10 +125,9 @@ const Packages = () => {
                 <div className={styles.imageContainer}>
                   <Image
                     src={pkg.image}
-                    alt={pkg.title}
+                    alt={pkg.altText}
                     fill
                     className={styles.image}
-                    sizes="(max-width: 768px) 100vw, 400px"
                     priority={index < 3} // Prioritize first 3 images
                   />
                 </div>
@@ -83,17 +135,15 @@ const Packages = () => {
                 <div className={styles.packageContent}>
                   <div className={styles.packageHeader}>
                     <h3 className={styles.packageTitle}>{pkg.title}</h3>
-                    <p className={styles.packageDescription}>{pkg.description}</p>
                   </div>
                   
                   <div className={styles.packageFooter}>
                     <div className={styles.ratingContainer}>
                       {renderStars(pkg.rating)}
-                      <span className={styles.reviews}>({pkg.reviews} reviews)</span>
                     </div>
                     <div className={styles.priceContainer}>
-                      <span className={styles.priceLabel}>From</span>
-                      <span className={styles.price}>${pkg.price}</span>
+                      <span className={styles.priceLabel}></span>
+                      <span className={styles.price}>{pkg.price}DT</span>
                     </div>
                   </div>
                 </div>
@@ -103,7 +153,7 @@ const Packages = () => {
 
           <div className={styles.viewMoreContainer}>
             <button className={styles.viewMoreButton}>
-              View All Packages
+              Voir Plus
               <FontAwesomeIcon icon={faArrowRight} className={styles.arrowIcon} />
             </button>
           </div>

@@ -4,18 +4,18 @@ import Image from 'next/image';
 const Features = () => {
   const features = [
     {
-      title: 'Competitive Pricing',
-      text: 'Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea',
+      title: 'Guide numérique',
+      text: 'Profitez de nos circuits culturels avec une navigation fluide géolocalisée tout en accédant à des contenus multimédias historiques.',
       icon: '/img/feature-1.png'
     },
     {
-      title: 'Best Services', 
-      text: 'Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea',
+      title: 'Packs De Services Diversifiés ', 
+      text: 'Location de vélo, Expériences VR/AR, Ateliers numériques et artistiques pour enrichir la visite et relier le monument à son écosystème.',
       icon: '/img/feature-2.png'
     },
     {
-      title: 'Worldwide Coverage',
-      text: 'Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea',
+      title: 'Circuits De Visite Personnalisés',
+      text: 'Explorez les sites historiques et culturels à votre rythme et selon vos préférences (Durée, Budget, époque, ...) grâce à des itinéraires sur mesure.',
       icon: '/img/feature-3.png'
     }
   ];
