@@ -25,7 +25,7 @@
   scroll-snap-type: x proximity;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
-  scrollbar-color: #60D8F4 transparent;
+  scrollbar-color: #8F8F8F transparent;
   gap: 1.5rem;
   padding: 1rem 0;
   margin: 2rem 0;
@@ -59,7 +59,7 @@
   width: min(689px, 90vw);
   height: min(508px, 60vh);
   position: relative;
-  border-radius: 8px;
+  border-radius: 20px;
   overflow: hidden;
   transition: transform 0.2s ease;
 }
@@ -76,11 +76,14 @@
 
 /* Typography */
 .subtitle {
+  margin-bottom: 1rem;
   color: #60D8F4;
+  font-size: 25px;
+  letter-spacing: 5px;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: clamp(1rem, 2vw, 1.5rem);
-  margin-bottom: 2rem;
+  font-style: normal;
+  font-weight: 600;
+  font-family: 'Inter';
 }
 
 .title {

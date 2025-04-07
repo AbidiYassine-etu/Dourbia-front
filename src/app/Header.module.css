@@ -33,7 +33,7 @@
   font-size: 1.5rem;
   font-weight: 700;
   color: #2563eb;
-  margin-right: 3rem; /* Adjust this value for desired logo-nav spacing */
+  margin-right: 3rem;
 }
 
 /* Navigation Menu */
@@ -41,7 +41,6 @@
   display: flex;
   align-items: center;
   gap: 2rem;
-  
 }
 
 .navLinks {
@@ -62,7 +61,8 @@
   transition: color 0.2s;
 }
 
-.navLink:hover, .navLink.active {
+.navLink:hover,
+.navLink.active {
   color: #002863;
   border-bottom: 2px solid #002863;
 }
@@ -72,7 +72,20 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  height: 100%; /* Match nav height */
+  height: 100%;
+}
+
+.loginText span {
+  color: #002863;
+  font-weight: 500;
+  line-height: 14px;
+}
+
+.navLink,
+.loginText span,
+.selectLang {
+  padding: 0.1rem 0;
+  line-height: 1.5;
 }
 
 .langSelector {
@@ -88,17 +101,6 @@
   align-items: center;
   height: 100%;
   position: relative;
-}
-.loginText span{
-  color: #002863;
-  font-weight: 500;
-  line-height: 14px; /* 70% */
-}
-
-/* Ensure consistent click area */
-.navLink, .loginText span, .selectLang {
-  padding: 0.1rem 0;
-  line-height: 1.5;
 }
 
 .selectLang {
@@ -124,8 +126,72 @@
   padding-bottom: 0.25rem;
 }
 
-.langIcon{
-  padding-right:0.25rem;
+.langIcon {
+  padding-right: 0.25rem;
+}
+
+/* Dropdown Styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownToggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  color: #002863;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #ffffff;
+  min-width: 180px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 8px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+.dropdownOpen {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdownMenu a,
+.dropdownMenu button,
+.dropdownMenu span {
+  all: unset;
+  width: 100%;
+  padding: 10px 16px;
+  display: block;
+  color: #002863;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.dropdownMenu a:hover,
+.dropdownMenu button:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdownUser {
+  font-weight: bold;
+  background-color: #f9f9f9;
+  pointer-events: none;
 }
 
 /* Mobile Menu */
@@ -178,7 +244,8 @@
     z-index: 98;
   }
 
-  .navLinks, .loginSection {
+  .navLinks,
+  .loginSection {
     flex-direction: column;
     gap: 1.5rem;
   }
@@ -189,4 +256,5 @@
   .navMenu {
     display: flex;
   }
+
 }

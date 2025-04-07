@@ -1,0 +1,230 @@
+.container {
+    display: grid;
+    grid-template-columns: 250px 1fr 200px;
+    min-height: 100vh;
+    gap: 2rem;
+    padding: 2rem;
+    padding-top: 5rem;
+    background: #f5f6fa;
+  }
+  
+  .sidebar {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+  
+  .sidebarTitle {
+    color: #2d3436;
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+  }
+  
+  .mainContent {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem 3rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+  
+  .rightSidebar {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    height: fit-content;
+  }
+  
+  .profileForm {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .formTitle {
+    color: #2d3436;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .avatarSection {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .deconnect{
+    color:red;
+  }
+  
+  .avatarWrapper {
+    position: relative;
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+  }
+  
+  .avatarImage {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: solid;
+  }
+  
+  .avatarUploadLabel {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    background: #5ED8F2;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+  }
+  
+  .avatarUploadLabel:hover {
+    background: #4ec1db;
+  }
+  
+  .avatarUploadInput {
+    display: none;
+  }
+  
+  .formGroup {
+    margin-bottom: 1.5rem;
+  }
+  
+  .formGroup label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #636e72;
+    font-weight: 500;
+  }
+  
+  .formInput,
+  .formTextarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #dfe6e9;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+  }
+  
+  .formInput:focus,
+  .formTextarea:focus {
+    outline: none;
+    border-color: #5ED8F2;
+    box-shadow: 0 0 0 3px rgba(94, 216, 242, 0.1);
+  }
+  
+  .submitButton {
+    background: #5ED8F2;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 60px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.2s ease;
+  }
+  
+  .submitButton:hover {
+    background: #4ec1db;
+  }
+  
+  .languageSelector {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .select {
+    padding: 0.5rem;
+    border: 1px solid #dfe6e9;
+    border-radius: 6px;
+    background: white;
+  }
+
+  .navContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .navButton {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 8px;
+    width: 100%;
+    color: #474747;
+    font-family: 'Actor';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    text-transform: capitalize;
+  }
+  
+  .navButton:hover {
+    text-decoration:underline;
+  }
+  
+  .navButton.active {
+    color: #002863;
+    font-family: 'Actor';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+  }
+  
+  .navButton.active svg path {
+    fill: white;
+  }
+  
+  .navButton span {
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 1rem;
+    }
+  
+    .sidebar,
+    .rightSidebar {
+      display: none;
+    }
+  
+    .mainContent {
+      padding: 1.5rem;
+    }
+  
+    .formTitle {
+      font-size: 1.5rem;
+    }
+  
+    .avatarWrapper {
+      width: 120px;
+      height: 120px;
+    }
+  }

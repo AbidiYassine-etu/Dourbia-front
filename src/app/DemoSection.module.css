@@ -13,9 +13,12 @@
   }
   
   .title {
-    font-size: 2.35rem;
-    margin-bottom: 1.5rem;
     color: #002863;
+    font-family: Inter;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
   }
   
   .description {
