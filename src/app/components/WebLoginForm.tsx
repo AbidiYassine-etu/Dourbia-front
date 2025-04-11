@@ -86,16 +86,13 @@ export default function SignInForm() {
           email: email.trim(),
           password: password
         }),
+        credentials:"include"
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("user", JSON.stringify({
-          username: data.user.username,
-          role: data.user.role
-        }));
+        console.log("sign in success")
         localStorage.setItem("isLoggedIn", "true");
 
         // Update auth context

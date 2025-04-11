@@ -1,7 +1,7 @@
 // app/profile/page.tsx
 'use client';
 
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import styles from './profile.module.css';
 
 
@@ -35,12 +35,19 @@ export default function ProfilePage() {
   const [selectedLanguage, setSelectedLanguage] = useState('en');
   const [activeTab, setActiveTab] = useState('profile');
   const [profileImage, setProfileImage] = useState('/default-avatar.jpg');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [userId, setUserId] = useState<number | null>(null);
   const [formData, setFormData] = useState({
-    name: 'John Doe',
-    email: 'john@example.com',
-    bio: 'Digital artisan crafting immersive experiences',
+    username: '',
+    email: '',
+    password: '',
+    avatar: '',
+    country: '',
+    region: '',
+    phone: '',
   });
-
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -54,12 +61,71 @@ export default function ProfilePage() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Profile updated:', formData);
+  
+    if (formData.password !== confirmPassword) {
+      alert('Passwords do not match!');
+      return;
+    }
+  
+    try {
+      const res = await fetch(`http://localhost:8000/auth/update/${userId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify(formData),
+      });
+  
+      if (!res.ok) throw new Error('Failed to update profile');
+  
+      const updated = await res.json();
+      console.log('Profile updated:', updated);
+      alert('Profile updated successfully!');
+    } catch (err) {
+      console.error('Update error:', err);
+      alert('Something went wrong.');
+    }
   };
+  
+  
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const res = await fetch('http://localhost:8000/auth/profile', {
+          method: 'GET',
+          credentials: 'include',
+        });
+  
+        if (!res.ok) throw new Error('Failed to fetch profile');
+  
+        const data = await res.json();
+        
+        setUserId(data.id);
+        // Populate formData with response
+        setFormData(prev => ({
+          ...prev,
+          username: data.username || '',
+          email: data.email || '',
+          avatar: data.avatar || '',
+          country: data.country || '',
+          region: data.region || '',
+          phone: data.phone || '',
+          password: '', // Don't preload password
+        }));
+      } catch (err) {
+        console.error('Error loading profile:', err);
+      }
+    };
+  
+    fetchProfile();
+  }, []);
 
   return (
+    
     <div className={styles.container}>
       {/* Left Navigation */}
       <nav className={styles.sidebar}>
@@ -105,7 +171,8 @@ export default function ProfilePage() {
       </nav>
 
       {/* Main Content */}
-      <main className={styles.mainContent}>
+     {/* Main Content */}
+     <main className={styles.mainContent}>
         {activeTab === 'profile' ? (
           <form onSubmit={handleSubmit} className={styles.profileForm}>
             <h1 className={styles.formTitle}>Update Profile</h1>
@@ -113,7 +180,7 @@ export default function ProfilePage() {
             <div className={styles.avatarSection}>
               <div className={styles.avatarWrapper}>
                 <img 
-                  src={profileImage} 
+                  src={formData.avatar} 
                   alt="Profile" 
                   className={styles.avatarImage}
                 />
@@ -130,35 +197,134 @@ export default function ProfilePage() {
             </div>
 
             <div className={styles.formGroup}>
-              <label htmlFor="name">Full Name</label>
               <input
                 type="text"
-                id="name"
-                value={formData.name}
-                onChange={(e) => setFormData({...formData, name: e.target.value})}
+                id="username"
+                value={formData.username}
+                onChange={(e) => setFormData({...formData, username: e.target.value})}
                 className={styles.formInput}
+                placeholder="Username * "
+                required
               />
             </div>
 
             <div className={styles.formGroup}>
-              <label htmlFor="email">Email Address</label>
               <input
                 type="email"
                 id="email"
                 value={formData.email}
                 onChange={(e) => setFormData({...formData, email: e.target.value})}
                 className={styles.formInput}
+                placeholder="Email * "
+                required
+              />
+            </div>
+            <div className={styles.formGroup}>
+              <div className={styles.passwordInputContainer}>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  value={formData.password}
+                  onChange={(e) => setFormData({...formData, password: e.target.value})}
+                  className={styles.formInput}
+                  required
+                  placeholder="Mot de Passe * "
+                  minLength={8}
+                />
+                <svg
+                  className={`${styles.eyeIcon} ${showPassword ? styles.active : ''}`}
+                  onClick={() => setShowPassword(!showPassword)}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" 
+                        strokeWidth="2" 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round"/>
+                  <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" 
+                        strokeWidth="2" 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round"/>
+                    <path 
+                        className={styles.strikeThrough} 
+                        d="M3 3L21 21" 
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      />
+                </svg>
+              </div>
+              <span className={styles.inputHint}>Minimum 8 characters</span>
+            </div>
+
+              <div className={styles.formGroup}>
+                <div className={styles.passwordInputContainer}>
+                  <input
+                    type={showConfirmPassword ? "text" : "password"}
+                    id="confirmPassword"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    className={styles.formInput}
+                    placeholder="Confirmé Mot de Passe * "
+                    required
+                  />
+                  <svg
+                    className={`${styles.eyeIcon} ${showConfirmPassword ? styles.active : ''}`}
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" 
+                          strokeWidth="2" 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round"/>
+                    <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" 
+                          strokeWidth="2" 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round"/>
+                    <path 
+                        className={styles.strikeThrough} 
+                        d="M3 3L21 21" 
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      />
+                  </svg>
+                </div>
+                {confirmPassword && (
+                  <span className={`${styles.inputHint} ${
+                    formData.password === confirmPassword 
+                      ? styles.inputHintValid 
+                      : styles.inputHintInvalid
+                  }`}>
+                    {formData.password === confirmPassword 
+                      ? 'Passwords match!' 
+                      : 'Passwords do not match'}
+                  </span>
+                )}
+              </div>
+
+            <div className={styles.formGroup}>
+              <input
+                type="text"
+                id="country"
+                value={formData.country}
+                onChange={(e) => setFormData({...formData, country: e.target.value})}
+                className={styles.formInput}
+                placeholder="Pays * "
+                required
               />
             </div>
 
             <div className={styles.formGroup}>
-              <label htmlFor="bio">Bio</label>
-              <textarea
-                id="bio"
-                value={formData.bio}
-                onChange={(e) => setFormData({...formData, bio: e.target.value})}
-                className={styles.formTextarea}
-                rows={4}
+              <input
+                type="text"
+                id="region"
+                value={formData.region}
+                onChange={(e) => setFormData({...formData, region: e.target.value})}
+                className={styles.formInput}
+                placeholder="Region  "
+                required
               />
             </div>
 

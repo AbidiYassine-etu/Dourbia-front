@@ -197,7 +197,55 @@
   .navButton.active svg path {
     fill: white;
   }
+
+  .inputHintValid {
+    color: #4CAF50 !important; /* Green color for valid */
+  }
   
+  .inputHintInvalid {
+    color: #f44336 !important; /* Red color for invalid */
+  }
+  
+  .inputHint {
+    font-size: 0.8rem;
+    margin-top: 4px;
+    display: block;
+    color: #666; /* Default hint color */
+  }
+  
+  .passwordInputContainer {
+    position: relative;
+  }
+  
+  .eyeIcon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    stroke: #CCCCCC;
+    transition: stroke 0.3s ease;
+  }
+  .strikeThrough {
+    stroke: transparent;
+    transition: stroke 0.3s ease;
+  }
+  
+  .eyeIcon.active .strikeThrough {
+    stroke: #474747;
+  }
+
+  .eyeIcon.active {
+    stroke: #474747;
+  }
+  
+  /* If you want hover effect */
+  .eyeIcon:hover {
+    stroke: #666666;
+  }
+
   .navButton span {
     font-size: 0.95rem;
     font-weight: 500;

@@ -1,13 +1,15 @@
 'use client'
 
-import { useState, useEffect, useRef, useContext } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from '@/app/Header.module.css'
 import { useAuth } from '../context/auth-context'
-import router from 'next/router'
+import { useRouter } from 'next/navigation';
 
 export default function Header() {
+  const router = useRouter(); // Add useRouter here
+
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeButton, setActiveButton] = useState('Home')
   const menuRef = useRef<HTMLDivElement>(null)
@@ -16,6 +18,9 @@ export default function Header() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const {isLoggedIn, setIsLoggedIn} = useAuth();
   const [username, setUsername] = useState("");
+
+
+
 
   const navButtons = [
     { name: 'Home', path: '/' },
@@ -27,7 +32,7 @@ export default function Header() {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
-  useEffect(() => {
+   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (
         isMenuOpen &&
@@ -36,37 +41,55 @@ export default function Header() {
         !menuRef.current.contains(e.target as Node) &&
         !hamburgerRef.current.contains(e.target as Node)
       ) {
-        setIsMenuOpen(false)
+        setIsMenuOpen(false);
       }
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(e.target as Node)
-      ) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
         setIsDropdownOpen(false);
       }
-    }
+    };
 
     const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setIsMenuOpen(false)
-    }
+      if (e.key === 'Escape') setIsMenuOpen(false);
+    };
 
-    const token = localStorage.getItem("token");
-    const user = localStorage.getItem("user");
-
-    if (token && user) {
-      const parsedUser = JSON.parse(user);
-      setIsLoggedIn(true);
-      setUsername(parsedUser.username);
-    }
-
-    document.addEventListener('mousedown', handleClickOutside)
-    document.addEventListener('keydown', handleEsc)
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleEsc);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-      document.removeEventListener('keydown', handleEsc)
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEsc);
+    };
+  }, [isMenuOpen, isDropdownOpen]);
+
+  const handleLogout = async () => {
+    try {
+      console.log('Logging out...');
+
+      const res = await fetch('http://localhost:8000/auth/logout', {
+        method: 'POST',
+        credentials: 'include',
+      });
+
+      if (!res.ok) {
+        throw new Error('Logout failed');
+      }
+
+      console.log('Logged out successfully');
+
+      // Clear local storage and state
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      localStorage.removeItem('isLoggedIn');
+
+      setIsLoggedIn(false);
+
+      // Redirect to home page (or wherever you want)
+      router.push('/');
+    } catch (err) {
+      console.error('Logout error:', err);
     }
-  }, [isMenuOpen,isDropdownOpen]);
+  };
+
 
   return (
     <header className={styles.header}>
@@ -134,13 +157,15 @@ export default function Header() {
                         <span className={styles.dropdownUser}>Bonjour, {username}</span>
                           <Link href="/profile">Profil</Link>
                           <Link href="/settings">Paramètres</Link>
-                          <a onClick={() => {
-                            localStorage.removeItem("token");
-                            localStorage.removeItem("user");
-                            localStorage.removeItem("isLoggedIn");
-                            setIsLoggedIn(false);
-                            router.push("/");
-                          }}>Déconnexion</a>
+                            <a
+                            href="#"
+                            onClick={(e) => {
+                              e.preventDefault(); // Prevent default behavior of the link
+                              handleLogout(); // Call your logout function
+                            }}
+                          >
+                            Déconnexion
+                          </a>
                         </div>
                       </div>
                     ) : (
