@@ -1,23 +1,48 @@
 /* About Section */
 .aboutSection {
-  width: 100%;
-  padding: 5rem 5rem 5rem 12rem;
-  background: #fff;
-}
-
-/* Container */
-.container {
-  padding: 40px;
-  margin: 0 auto;
+  padding: 4.19rem 1.5rem 0.81rem 1.5rem;
+  width: 90rem;
+  margin-left: 4.5rem;
   max-width: 1800px;
+  fill: #FFF;
+  filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.10));
 }
 
+/* Typography */
+.subtitle {
+  color: #60D8F4;
+  font-family: Inter;
+  font-size: 1.5625rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.3125rem;
+  letter-spacing: 0.3125rem;
+  text-transform: uppercase;
+  margin-bottom: 1.94rem;
+  margin-left: 4.69rem;
+  display: flex;
+  width: 36.4375rem;
+  height: 1.3125rem;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.title {
+  color: #002863;
+  -webkit-text-stroke-width: 1px;
+  font-family: Inter;
+  font-size: 3.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.8125rem;
+  text-transform: capitalize;
+  width: 37.8125rem;
+  margin-left: 4.69rem;
+}
 /* Gallery Container */
 .galleryContainer {
-  margin: 0 auto;
   position: relative;
 }
-
 .galleryRow {
   display: flex;
   overflow-x: auto;
@@ -27,8 +52,7 @@
   scrollbar-width: thin;
   scrollbar-color: #8F8F8F transparent;
   gap: 1.5rem;
-  padding: 1rem 0;
-  margin: 2rem 0;
+  padding-top: 0.88rem;
 }
 
 .galleryRow::-webkit-scrollbar {
@@ -45,19 +69,13 @@
   cursor: grabbing;
   scroll-snap-type: x mandatory;
 }
-
-.galleryImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
 .galleryItem {
   scroll-snap-align: center;
   flex: 0 0 auto;
-  width: min(689px, 90vw);
-  height: min(508px, 60vh);
+  width: 42rem;
+  height: 25.3125rem;
+  flex-shrink: 0;
+  aspect-ratio: 224/135;
   position: relative;
   border-radius: 20px;
   overflow: hidden;
@@ -67,33 +85,11 @@
 /* Content Box */
 .contentBox {
   background: #fff;
-  padding: 2rem;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  padding: 4.19rem 0.75rem 0.81rem 0.75rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   position: relative;
   z-index: 1;
-}
-
-/* Typography */
-.subtitle {
-  margin-bottom: 1rem;
-  color: #60D8F4;
-  font-size: 25px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  font-style: normal;
-  font-weight: 600;
-  font-family: 'Inter';
-}
-
-.title {
-  color: #002863;
-  font-family: "Inter";
-  font-size: clamp(2rem, 4vw, 3rem);
-  margin-bottom: 1.5rem;
-  font-weight: 400;
-  line-height: 1.2;
-  text-transform: capitalize;
 }
 
 /* Responsive Adjustments */
@@ -101,7 +97,7 @@
   .aboutSection {
     padding: 4rem;
   }
-  
+
   .galleryItem {
     width: min(600px, 80vw);
     height: min(400px, 50vh);
@@ -112,7 +108,7 @@
   .aboutSection {
     padding: 3rem;
   }
-  
+
   .container {
     padding: 30px;
   }
@@ -122,16 +118,16 @@
   .aboutSection {
     padding: 2rem;
   }
-  
+
   .container {
     padding: 20px;
   }
-  
+
   .galleryItem {
     width: min(400px, 85vw);
     height: min(300px, 40vh);
   }
-  
+
   .contentBox {
     padding: 1.5rem;
   }
@@ -141,21 +137,21 @@
   .aboutSection {
     padding: 1.5rem;
   }
-  
+
   .container {
     padding: 15px;
   }
-  
+
   .galleryItem {
     width: min(300px, 90vw);
     height: min(200px, 35vh);
   }
-  
+
   .subtitle {
     font-size: 0.875rem;
     margin-bottom: 1.5rem;
   }
-  
+
   .title {
     font-size: 1.75rem;
   }

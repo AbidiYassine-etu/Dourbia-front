@@ -3,21 +3,22 @@
     justify-content: space-between;
     align-items: center;
     padding: 4rem 8%;
-    background-color: #f8f9fa;
+    background-color: #fff;
   }
   
   .textContent {
     flex: 1;
     max-width: 410px;
     padding-right: 2rem;
+    
   }
   
   .title {
     color: #002863;
     font-family: Inter;
-    font-size: 48px;
+    font-size: 3.75rem;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 500;
     line-height: normal;
   }
   

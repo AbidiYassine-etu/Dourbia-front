@@ -138,12 +138,12 @@
   cursor: pointer;
   transition: all 0.3s ease;
   border: 1px solid #5ED8F2; /* Stroke color */
-  background-color: rgba(217, 217, 217, 0.5); /* Inactive state */
+  background-color: rgba(217, 217, 217, 0.5);
   opacity: 0.5; /* Overall opacity for inactive */
 }
 
 .activeDot {
-  background-color: rgba(255, 255, 255, 0.8); /* Active fill */
+  background-color: rgba(255, 255, 255, 0.8); 
   opacity: 1; /* Full opacity for active */
   border: 1px solid #5ED8F2;
   position: relative;
