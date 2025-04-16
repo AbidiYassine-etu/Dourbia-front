@@ -24,28 +24,23 @@
   align-items: center;
   height: 100%;
   position: relative;
-  gap: 2rem;
 }
 
 .logoLink {
   display: flex;
   align-items: center;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #2563eb;
-  margin-right: 3rem;
+  margin-right: 4rem;
 }
 
 /* Navigation Menu */
 .navMenu {
   display: flex;
   align-items: center;
-  gap: 2rem;
 }
 
 .navLinks {
   display: flex;
-  gap: 1.5rem;
+  gap: 2.5rem;
 }
 
 .userIcon {
@@ -53,33 +48,52 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  
 }
-
 .navLink {
   padding: 0.5rem 0;
-  font-size: 1rem;
   color: #8F8F8F;
-  transition: color 0.2s;
+  text-align: center;
+  font-family: Inter;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.25rem;
+  text-transform: capitalize;
 }
 
 .navLink:hover,
 .navLink.active {
   color: #002863;
-  border-bottom: 2px solid #002863;
+  text-align: center;
+  font-family: Inter;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.25rem; /* 100% */
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: auto;
+  text-decoration-thickness: auto;
+  text-underline-offset: 25%; /* 5px */
+  text-underline-position: from-font;
 }
 
 /* Login Section */
 .loginSection {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 4.25rem;
   height: 100%;
 }
 
 .loginText span {
   color: #002863;
-  font-weight: 500;
-  line-height: 14px;
+  font-family: Actor;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .navLink,
@@ -120,13 +134,14 @@
 .connexionTrigger {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.2rem;
   cursor: pointer;
   color: #002863;
   font-weight: 500;
   transition: all 0.3s ease;
   background: none;
   border: none;
+  font-size: 1.25rem;
 }
 
 .connexionTrigger:hover {

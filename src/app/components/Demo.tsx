@@ -8,8 +8,14 @@ const DemoSection = () => {
       {/* Left Text Content */}
       <div className={styles.textContent}>
         <h2 className={styles.title}>
-        Fonctionnalités<br/> Révolutionnaires<br/> Pour Une Expérience <br/> Inégalée
+          Fonctionnalités<br /> Révolutionnaires<br /> Pour Une Expérience <br /> Inégalée
         </h2>
+        <div className={styles.buttonGroup}>
+          <button className={styles.button}><span className={styles.buttonText}>Devenir Partenaire</span></button>
+          <button className={styles.button}><span className={styles.buttonText}>Devenir Expert</span></button>
+        </div>
+
+
       </div>
       {/* Center Phone Demo */}
       <div className={styles.phoneDemo}>
@@ -29,7 +35,7 @@ const DemoSection = () => {
               className={styles.demoImage}
             />
             <div className={styles.Demo}>
-            <p>Démo</p>
+              <p>Démo</p>
             </div>
           </div>
         </div>

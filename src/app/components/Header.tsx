@@ -22,7 +22,7 @@ export default function Header() {
   const navButtons = [
     { name: 'Acceuil', path: '/' },
     { name: "à propos", path: '/about' },
-    { name: 'Déstinations', path: '/destination' },
+    { name: 'Destinations', path: '/destination' },
     { name: 'Expériences', path: '/experience' },
     { name: 'Contact', path: '/contact' },
   ]
