@@ -50,12 +50,13 @@ const About = () => {
                   onMouseLeave={handleMouseUp}
                   onMouseMove={handleMouseMove}
                 >
-                  {[1, 2, 3, 4, 5].map((item) => (
+                  {[1, 2].map((item) => (
                     <div key={item} className={styles.galleryItem}>
                       <Image
                         src={`/img/circuit-${item}.png`}
                         alt={`Tour experience ${item}`}
                         fill
+                        objectFit="contain"
                         className={styles.galleryImage}
                       />
                     </div>

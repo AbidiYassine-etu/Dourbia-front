@@ -15,8 +15,8 @@ const Packages = () => {
         </>
       ),
       altText: "Pack Visiteur Journée Complète", // Add string alternative
-      rating: 4,
-      price: 160
+      rating: 3,
+      price: 300
     },
     {
       image: '/img/pack2.png',

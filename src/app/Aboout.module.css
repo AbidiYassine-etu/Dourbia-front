@@ -1,8 +1,7 @@
-/* About Section */
 .aboutSection {
   padding: 4.19rem 1.5rem 0.81rem 1.5rem;
   width: 90rem;
-  margin-left: 4.5rem;
+  margin-left: 15.5rem;
   max-width: 1800px;
   fill: #FFF;
   filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.10));
@@ -46,7 +45,6 @@
 .galleryRow {
   display: flex;
   overflow-x: auto;
-  cursor: grab;
   scroll-snap-type: x proximity;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
@@ -55,20 +53,6 @@
   padding-top: 0.88rem;
 }
 
-.galleryRow::-webkit-scrollbar {
-  height: 8px;
-  background: transparent;
-}
-
-.galleryRow::-webkit-scrollbar-thumb {
-  background: #60D8F4;
-  border-radius: 4px;
-}
-
-.galleryRow.grabbing {
-  cursor: grabbing;
-  scroll-snap-type: x mandatory;
-}
 .galleryItem {
   scroll-snap-align: center;
   flex: 0 0 auto;

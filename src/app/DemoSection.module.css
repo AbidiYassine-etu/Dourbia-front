@@ -8,8 +8,11 @@
   
   .textContent {
     flex: 1;
-    max-width: 410px;
-    padding-right: 2rem;
+    width: 35.12506rem;
+    height: 21.375rem;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
     
   }
   
@@ -23,6 +26,7 @@
   }
   
   .description {
+    display: flex;
     font-size: 1.1rem;
     line-height: 1.6;
     color: #4a5568;
@@ -51,9 +55,10 @@
 
 .phoneFrame {
     position: relative;
-    width: 300px;
-    height: 650px;
-    /* Add overflow hidden if rotation reveals background */
+    width: 15.64963rem;
+    height: 29.69313rem;
+    transform: rotate(4.1deg);
+    flex-shrink: 0;
     overflow: hidden;
 }
 
@@ -92,6 +97,9 @@
   }
   
   .logoContainer {
+    width: 12.75rem;
+    height: 12.75rem;
+    flex-shrink: 0;
     margin-bottom: 1.5rem;
     margin-top: 2rem;
   }
@@ -110,6 +118,11 @@
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
+    width: 10.125rem;
+    height: 3rem;
+    flex-shrink: 0;
+    aspect-ratio: 27/8;
+    border-radius: 0.9375rem;
   }
   
   .storeLink {
@@ -125,6 +138,10 @@
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
+    width: 6.4375rem;
+    height: 6.25rem;
+    flex-shrink: 0;
+    aspect-ratio: 103/100;
   }
   
   .qrImage {

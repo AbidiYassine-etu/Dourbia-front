@@ -30,7 +30,7 @@ const VideoDemoSection = () => {
 
   return (
     <section className={styles.section}>
-      <h6 className={styles.subtitle}>Témoignes</h6>
+      <h6 className={styles.subtitle}>Témoignages</h6>
       <h2 className={styles.sectionTitle}>Ce qu'ils pensent de nous</h2>
       
       <div className={styles.carouselContainer}>

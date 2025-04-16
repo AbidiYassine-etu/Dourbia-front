@@ -31,14 +31,30 @@ const ActivityIcon = ({ active }: { active: boolean }) => (
 </svg>
 );
 
+
+const WelcomeModal = ({ onClose }: { onClose: () => void }) => (
+  <div className={styles.modalOverlay}>
+    <div className={styles.modalContent}>
+      <h2>Welcome Back! 👋</h2>
+      <p>You have successfully logged in.</p>
+      <button 
+        onClick={onClose}
+        className={styles.modalButton}
+      >
+        OK
+      </button>
+    </div>
+  </div>
+);
+
 export default function ProfilePage() {
-  const [selectedLanguage, setSelectedLanguage] = useState('en');
   const [activeTab, setActiveTab] = useState('profile');
-  const [profileImage, setProfileImage] = useState('/default-avatar.jpg');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [userId, setUserId] = useState<number | null>(null);
+  const [showWelcomeModal, setShowWelcomeModal] = useState(false);
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -48,18 +64,6 @@ export default function ProfilePage() {
     region: '',
     phone: '',
   });
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        if (e.target?.result) {
-          setProfileImage(e.target.result as string);
-        }
-      };
-      reader.readAsDataURL(file);
-    }
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -88,11 +92,47 @@ export default function ProfilePage() {
       console.error('Update error:', err);
       alert('Something went wrong.');
     }
-  };
-  
-  
 
+
+  };
+
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    try {
+      const formData = new FormData();
+      formData.append('avatar', file);
+
+      const uploadResponse = await fetch('http://localhost:8000/profile/avatar', {
+        method: 'POST',
+        credentials: 'include',
+        body: formData
+      });
+
+      if (uploadResponse.ok) {
+        const newAvatarResponse = await fetch('http://localhost:8000/profile/avatar', {
+          method: 'GET',
+          credentials: 'include',
+          cache: 'no-store'
+        });
+        
+        if (newAvatarResponse.ok) {
+          const newBlob = await newAvatarResponse.blob();
+          const newUrl = URL.createObjectURL(newBlob);
+          setAvatarUrl(newUrl);
+        }
+      }
+    } catch (error) {
+      console.error('Upload error:', error);
+    }
+  };
   useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const authSuccess = urlParams.get('authSuccess');       
+      if (authSuccess === 'true') {
+        setShowWelcomeModal(true);
+        window.history.replaceState({}, document.title, '/profile');
+      }
     const fetchProfile = async () => {
       try {
         const res = await fetch('http://localhost:8000/auth/profile', {
@@ -105,7 +145,6 @@ export default function ProfilePage() {
         const data = await res.json();
         
         setUserId(data.id);
-        // Populate formData with response
         setFormData(prev => ({
           ...prev,
           username: data.username || '',
@@ -114,7 +153,7 @@ export default function ProfilePage() {
           country: data.country || '',
           region: data.region || '',
           phone: data.phone || '',
-          password: '', // Don't preload password
+          password: '', 
         }));
       } catch (err) {
         console.error('Error loading profile:', err);
@@ -123,6 +162,38 @@ export default function ProfilePage() {
   
     fetchProfile();
   }, []);
+
+
+
+  // Separate useEffect for avatar loading
+  useEffect(() => {
+    const loadAvatar = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/profile/avatar', {
+          method: 'GET',
+          credentials: 'include',
+          cache: 'no-store'
+        });
+
+        if (response.ok) {
+          const blob = await response.blob();
+          const url = URL.createObjectURL(blob);
+          setAvatarUrl(url);
+        }
+      } catch (error) {
+        console.error('Error loading avatar:', error);
+      }
+    };
+
+    loadAvatar();
+
+    return () => {
+      if (avatarUrl) {
+        URL.revokeObjectURL(avatarUrl);
+      }
+    };
+  }, []);
+
 
   return (
     
@@ -169,9 +240,6 @@ export default function ProfilePage() {
           </button>
         </div>
       </nav>
-
-      {/* Main Content */}
-     {/* Main Content */}
      <main className={styles.mainContent}>
         {activeTab === 'profile' ? (
           <form onSubmit={handleSubmit} className={styles.profileForm}>
@@ -179,15 +247,16 @@ export default function ProfilePage() {
 
             <div className={styles.avatarSection}>
               <div className={styles.avatarWrapper}>
+              {formData.avatar || avatarUrl ? (
                 <img 
-                  src={formData.avatar} 
+                  src = {avatarUrl || formData.avatar} 
                   alt="Profile" 
                   className={styles.avatarImage}
-                />
+                />) : ( <div className="w-32 h-32 bg-gray-200 rounded-full"></div>)}
                 <label className={styles.avatarUploadLabel}>
                   <input
                     type="file"
-                    onChange={handleImageUpload}
+                    onChange={handleFileUpload}
                     accept="image/*"
                     className={styles.avatarUploadInput}
                   />
@@ -303,7 +372,6 @@ export default function ProfilePage() {
                   </span>
                 )}
               </div>
-
             <div className={styles.formGroup}>
               <input
                 type="text"
@@ -315,7 +383,6 @@ export default function ProfilePage() {
                 required
               />
             </div>
-
             <div className={styles.formGroup}>
               <input
                 type="text"
@@ -327,7 +394,6 @@ export default function ProfilePage() {
                 required
               />
             </div>
-
             <button type="submit" className={styles.submitButton}>
               Save Changes
             </button>
@@ -341,24 +407,7 @@ export default function ProfilePage() {
           </div>
         )}
       </main>
-
-      {/* Right Sidebar */}
-      <aside className={styles.rightSidebar}>
-        <div className={styles.languageSelector}>
-          <label htmlFor="language-select">Language:</label>
-          <select
-            id="language-select"
-            value={selectedLanguage}
-            onChange={(e) => setSelectedLanguage(e.target.value)}
-            className={styles.select}
-          >
-            <option value="en">English</option>
-            <option value="es">Español</option>
-            <option value="fr">Français</option>
-            <option value="de">Deutsch</option>
-          </select>
-        </div>
-      </aside>
+      {showWelcomeModal && <WelcomeModal onClose={() => setShowWelcomeModal(false)} />}
     </div>
   );
 }

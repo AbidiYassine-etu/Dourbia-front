@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   height: 100vh; /* Full viewport height */
-  overflow: hidden;
+  overflow: visible !important; /* Crucial for dropdown visibility */
 }
 
 .carousel {
@@ -16,10 +16,14 @@
   height: 100%;
   opacity: 0;
   transition: opacity 0.6s ease;
+  pointer-events: none; /* Disable interactions for inactive items */
+
 }
 
 .carouselItem.active {
   opacity: 1;
+  pointer-events: auto; /* Enable interactions for active item */
+  z-index: 2; /* Ensure active item is above others */
 }
 
 .imageContainer {
@@ -50,7 +54,7 @@
   transform: translateX(-50%);
   width: 90%;
   max-width: 800px;
-  z-index: 3;
+  z-index: 100 !important; /* Boost above all other elements */
 }
 
 .selectGroup {
@@ -61,6 +65,7 @@
   gap: 1.5rem;
   align-items: center;
   justify-content: center;
+  z-index: 200 !important; /* Higher than SVG elements */
 }
 
 .selectInput {
@@ -70,7 +75,7 @@
   border-bottom: 1px solid #8F8F8F;
   background: #FFF;
   color: #8F8F8F;
-  font-family: 'Inter', sans-serif;
+  font-family: Inter;
   font-size: 1.5rem;
   font-style: normal;
   font-weight: 400;
@@ -81,11 +86,13 @@
 
 /* For the dropdown options */
 .selectInput option {
-  color: #333; /* Default color for options */
-  font-family: 'Inter', sans-serif;
-  font-size: 1.2rem;
+  color: #8F8F8F;
   text-align: center;
-  padding: 0.5rem;
+  font-family: 'Inter';
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.65rem; /* 110% */
 }
 
 /* Placeholder text styling */
@@ -113,6 +120,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: 1.65rem; /* 132% */
+
 }
 
 .confirmationButton:hover {
@@ -189,7 +197,7 @@
   margin: 0 auto 3rem;
   position: relative;
   width: 9rem;
-  top:220px;
+  top:160px;
   right: 10px;
 }
 .subtitle {
@@ -212,7 +220,7 @@
 .svgWrapper {
   position: relative;
   display: inline-block;
-  margin: 4rem;
+  margin: 2.2rem; /* Reduced side margins */
 }
 
 .orangeShape {
@@ -220,7 +228,47 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 88%;
+  width: 100%; /* Changed from 88% to use container width */
+  height: auto;
+  z-index: 0;
+}
+
+
+.svgWrapper2 {
+  position: relative;
+  display: inline-block;
+  margin: 2rem 0; /* Reduced side margins */
+}
+
+.orangeShape2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: auto;
+  z-index: 0;
+}
+
+
+
+.svgWrapper3 {
+  position: relative;
+}
+
+.underlineSVG {
+  position: absolute;
+  bottom: 8px; /* Adjust based on your needs */
+  left: 63%;
+  transform: translateX(-50%);
+  width: 100%; /* Adjust SVG width relative to text */
+  height: 85px; /* Control SVG height */
+  z-index: -1; /* Put behind text if needed */
+}
+.orangeShape3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   height: auto;
   z-index: 0;
 }
@@ -238,6 +286,24 @@
   display: inline-block;
   white-space: nowrap;
   letter-spacing: 0.05em;
+  padding-top: 0.1rem;
+}
+
+
+.capitalizeText {
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-transform: capitalize;
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 4.5rem;
+  padding: 0.4em 1.2em;
+  display: inline-block;
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+  font-family: Inter;
   padding-top: 0.1rem;
 }
 

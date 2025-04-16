@@ -8,7 +8,7 @@ const DemoSection = () => {
       {/* Left Text Content */}
       <div className={styles.textContent}>
         <h2 className={styles.title}>
-        Fonctionnalités Révolutionnaires Pour Une Expérience Inégalée
+        Fonctionnalités<br/> Révolutionnaires<br/> Pour Une Expérience <br/> Inégalée
         </h2>
       </div>
       {/* Center Phone Demo */}
