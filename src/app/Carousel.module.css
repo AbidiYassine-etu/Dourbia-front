@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   height: 100vh; /* Full viewport height */
-  overflow: visible !important; /* Crucial for dropdown visibility */
+
 }
 
 .carousel {
@@ -16,14 +16,12 @@
   height: 100%;
   opacity: 0;
   transition: opacity 0.6s ease;
-  pointer-events: none; /* Disable interactions for inactive items */
-
 }
 
 .carouselItem.active {
   opacity: 1;
   pointer-events: auto; /* Enable interactions for active item */
-  z-index: 2; /* Ensure active item is above others */
+  z-index: 15; /* Ensure active item is above others */
 }
 
 .imageContainer {
@@ -49,57 +47,104 @@
   position: absolute;
   bottom: 2rem;
   margin-top: 3rem;
-  top:70%;
+  top:60%;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
   max-width: 800px;
-  z-index: 100 !important; /* Boost above all other elements */
+  z-index: 30;
+  isolation: isolate;
 }
 
+/* Custom Select Styles */
 .selectGroup {
   position: relative;
-  top:160px;
-  right:10px;
+  top: 160px;
+  right: 10px;
   display: flex;
   gap: 1.5rem;
   align-items: center;
   justify-content: center;
-  z-index: 200 !important; /* Higher than SVG elements */
+  z-index: 15;
+  vertical-align: top;
+}
+
+.customSelect {
+  position: relative;
+  width: 16rem;
+  z-index: 40;
 }
 
 .selectInput {
-  width: 16rem;
+  width: 100%;
   height: 3.625rem;
   border-radius: 0.3125rem;
+  border: none;
   border-bottom: 1px solid #8F8F8F;
   background: #FFF;
   color: #8F8F8F;
   font-family: Inter;
   font-size: 1.5rem;
-  font-style: normal;
   font-weight: 400;
   line-height: 1.65rem;
   text-align: center;
   padding: 0 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-/* For the dropdown options */
-.selectInput option {
+.customArrow {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.optionsContainer {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #FFF;
+  border-radius: 0.3125rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 0.5rem;
+  z-index: 30
+}
+
+.optionItem {
+  width: 100%;
+  padding: 1rem;
   color: #8F8F8F;
-  text-align: center;
-  font-family: 'Inter';
+  font-family: Inter;
   font-size: 1.5rem;
-  font-style: normal;
   font-weight: 400;
-  line-height: 1.65rem; /* 110% */
+  line-height: 1.65rem;
+  text-align: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-bottom: 1px dashed #8F8F8F;
+  transition: background-color 0.2s;
 }
 
-/* Placeholder text styling */
-.selectInput option:disabled {
-  color: #8F8F8F;
-  font-style: normal;
+.optionItem:hover {
+  background-color: #f5f5f5;
 }
+
+.optionItem.defaultOption {
+  border-bottom: 1px solid #E5691E;
+}
+
+/* Remove last border */
+.optionItem:last-child {
+  border-bottom: none;
+}
+
 
 .confirmationButton {
   display: flex;
@@ -135,8 +180,10 @@
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 1rem; /* Adjusted spacing between dots */
-  z-index: 10;
+  gap: 0.75rem; /* Adjusted spacing between dots */
+  z-index: 20;
+  pointer-events: auto; /* Ensure clickable if necessary */
+
 }
 
 .dot {
@@ -148,6 +195,10 @@
   border: 1px solid #5ED8F2; /* Stroke color */
   background-color: rgba(217, 217, 217, 0.5);
   opacity: 0.5; /* Overall opacity for inactive */
+  z-index: 15; /* Lower than options container */
+  position: relative; /* Required for z-index to work */
+  pointer-events: auto !important;
+
 }
 
 .activeDot {
@@ -200,6 +251,16 @@
   top:160px;
   right: 10px;
 }
+
+
+.title1 {
+  color: #FFF;
+  position: relative;
+  top:50px;
+  left: 20px;
+}
+
+
 .subtitle {
   color: #FFF;
   text-align: center;
@@ -213,7 +274,7 @@
   margin: -0.5rem auto;
   max-width: 90%;
   position: relative;
-  top:40px;
+  top:60px;
   right: 10px;
 } 
 /* New SVG wrapper */
@@ -249,11 +310,6 @@
   z-index: 0;
 }
 
-
-
-.svgWrapper3 {
-  position: relative;
-}
 
 .underlineSVG {
   position: absolute;
@@ -316,6 +372,7 @@
   .carouselItem {
     width: 600px;
     height: 400px;
+
   }
   .centeredButton {
     width: 180px;

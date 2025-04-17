@@ -7,10 +7,11 @@ const VideoDemoSection = () => {
   const [activeIndex, setActiveIndex] = useState(0)
   
   const videos = [
-    { src: '/videos/demo-1.mp4' },
-    { src: '/videos/demo-2.mp4' },
-    { src: '/videos/demo-3.mp4' },
-    { src: '/videos/demo-4.mp4' }
+    { src: '/video/video-2.mp4' },
+    { src: '/video/video-1.mp4' },
+    { src: '/video/video-2.mp4' },
+    { src: '/video/video-2.mp4' }
+
   ]
 
   const handlePrev = () => {
@@ -54,6 +55,7 @@ const VideoDemoSection = () => {
                 muted
                 playsInline
                 className={styles.demoVideo}
+                controls
               >
                 <source src={video.src} type="video/mp4" />
               </video>

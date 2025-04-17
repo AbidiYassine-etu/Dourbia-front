@@ -27,17 +27,17 @@ const DemoSection = () => {
             height={721}
             className={styles.phoneFrame}
           />
-          <div className={styles.screenContent}>
-            <Image
-              src="/screens/app-demo-screen.png"
-              alt="App Interface"
-              fill
-              className={styles.demoImage}
-            />
+            <video
+                className={styles.phoneVideo}
+                src="/video/Demo.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
             <div className={styles.Demo}>
               <p>Démo</p>
             </div>
-          </div>
         </div>
       </div>
       {/* Right Store Badges */}

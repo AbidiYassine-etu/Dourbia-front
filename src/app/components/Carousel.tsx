@@ -2,12 +2,18 @@
 import { useState } from 'react';
 import styles from '@/app/Carousel.module.css';
 import Image from 'next/image';
+import { CustomSelect } from '@/app/components/customSelect';
 
 const Carousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [destination, setDestination] = useState('');
-  const [duration, setDuration] = useState('');
-
+  const [destination, setDestination] = useState<string>('');
+  const [duration, setDuration] = useState<string>('');
+  const destinationOptions = [
+    { value: '', label: 'Destination' },
+    { value: 'Tous', label: 'Tous' },
+    { value: 'Carthage', label: 'Carthage' },
+    { value: 'La Marsa', label: 'La Marsa' }
+  ];
 
     const items = [
       {
@@ -100,11 +106,15 @@ const Carousel = () => {
       {
         image: '/img/carousel-5.png',
         alt: '**',
-        title: "Dourbia",
+        title:
+        <>            
+          <span className={styles.title1}>
+            Dourbia          
+          </span>
+        </>,
         subtitle: (
           <>            
           <br />
-          <div className={styles.svgWrapper3}>
             <span className={styles.capitalizeText}>
             Utilisation responsable de la 
               <svg 
@@ -116,7 +126,6 @@ const Carousel = () => {
               </svg>
             </span>
             <span className={styles.capitalizeText} >technologie Au service du patrimoine</span>
-          </div>
           </>
         ),
       }
@@ -136,6 +145,9 @@ const Carousel = () => {
     console.log('Duration:', duration);
     // You can now trigger your booking logic here
   };
+
+
+  
 
   return (
 <div className={styles.container}>
@@ -166,48 +178,44 @@ const Carousel = () => {
           {/* Subtitle with SVG */}
           <div className={styles.subtitlestyle}>
             <div className={styles.svgWrapper}>
-              <svg className={styles.orangeShape} viewBox="0 0 350 128">
-                <path d="M44.5652 128L0 24L331.522 0L350 83L44.5652 128Z" fill="#FB7822"/>
-              </svg>
             </div>
             <h1 className={styles.subtitle}>{item.subtitle}</h1>
           </div>
 
-          {/* Booking Widget */}
-          <div className={styles.bookingWidget}>
-      <form onSubmit={handleSubmit} className={styles.selectGroup}>
-        <select 
-          className={styles.selectInput}
-          value={destination}
-          onChange={(e) => setDestination(e.target.value)}
-        >
-          <option value="">Destination</option>
-          <option value="tous">Tous</option>
-          <option value="Carthage">Carthage</option>
-          <option value="La Marsa">La Marse</option>
-        </select>
-        
-        <select 
-          className={styles.selectInput}
-          value={duration}
-          onChange={(e) => setDuration(e.target.value)}
-        >
-          <option value="">Durée</option>
-          <option value="tous">Tous</option>
-          <option value="1"> 1 Journée</option>
-          <option value="2">1/2 Journée</option>
-        </select>
-        
-        <button type="submit" className={styles.confirmationButton}>
-          Réservez Maintenant
-        </button>
-      </form>
-    </div>
         </div>
       </div>
     ))}
-        {/* Navigation Dots */}
-        <div className={styles.carouselDots}>
+              {/* Booking Widget */}
+              <div className={styles.bookingWidget}>
+          <form onSubmit={handleSubmit} className={styles.selectGroup}>
+      <CustomSelect
+        value={destination}
+        onChange={setDestination}
+        options={destinationOptions}
+        defaultValue="Destination"
+      />
+      
+      {/* Duration select */}
+      <CustomSelect
+        value={duration}
+        onChange={setDuration}
+        options={[
+          { value: '', label: 'Durée' },
+          { value: 'Tous', label: 'Tous' },
+          { value: '1 Journée', label: '1 Journée' },
+          { value: '1/2 Journée', label: '1/2 Journée' }
+        ]}
+        defaultValue="Durée"
+      />
+
+      <button type="submit" className={styles.confirmationButton}>
+        Réservez Maintenant
+      </button>
+    </form>
+    </div>
+      </div>
+          {/* Navigation Dots */}
+              <div className={styles.carouselDots}>
           {items.map((_, index) => (
             <button
               key={index}
@@ -218,28 +226,6 @@ const Carousel = () => {
             />
           ))}
         </div>
-
-        {/* Navigation Arrows */}
-        <button
-          className={styles.controlPrev}
-          onClick={handlePrev}
-          aria-label="Previous slide"
-        >
-          <div className={styles.controlButton}>
-            <span className={styles.controlIconPrev} />
-          </div>
-        </button>
-        
-        <button
-          className={styles.controlNext}
-          onClick={handleNext}
-          aria-label="Next slide"
-        >
-          <div className={styles.controlButton}>
-            <span className={styles.controlIconNext} />
-          </div>
-        </button>
-      </div>
     </div>
   );
 };
