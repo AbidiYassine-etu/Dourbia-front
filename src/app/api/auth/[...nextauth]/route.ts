@@ -1,4 +1,4 @@
-import NextAuth from 'next-auth';
+/*import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 
 export default NextAuth({
@@ -12,4 +12,4 @@ export default NextAuth({
   pages: {
     signIn: '/signin', // Custom sign-in page
   },
-});
+});*/
