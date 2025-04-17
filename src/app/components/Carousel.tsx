@@ -131,14 +131,6 @@ const Carousel = () => {
       }
     ];
 
-  const handlePrev = () => {
-    setActiveIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1));
-  };
-
-  const handleNext = () => {
-    setActiveIndex((prev) => (prev === items.length - 1 ? 0 : prev + 1));
-  };
-
   const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault(); // prevent page reload
     console.log('Destination:', destination);
@@ -146,8 +138,6 @@ const Carousel = () => {
     // You can now trigger your booking logic here
   };
 
-
-  
 
   return (
 <div className={styles.container}>

@@ -14,7 +14,7 @@ export default function AuthSuccess() {
         if (res.ok) return res.json();
         throw new Error('Authentication failed');
       })
-      .then(user => {
+      .then(() => {
         localStorage.setItem('isLoggedIn', 'true');
         setIsLoggedIn(true); // Update context immediately
         router.replace('/profile?authSuccess=true');

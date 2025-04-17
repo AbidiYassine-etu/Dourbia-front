@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import styles from '@/app/Packages.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faStarHalfAlt, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Packages = () => {
   const packages = [
@@ -35,7 +35,7 @@ const Packages = () => {
       title: (
         <>
           Pack team building
-          <br /> l'ére du numérique
+          <br /> l’ére du numérique
         </>
       ),
       altText: "Pack Visiteur Journée Complète", // Add string alternative
