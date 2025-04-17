@@ -1,9 +1,6 @@
 'use client';
 import Image from 'next/image';
 import styles from '@/app/Packages.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
-
 const Packages = () => {
   const packages = [
     {

@@ -34,7 +34,7 @@ const EmailPass = () => {
             } else {
                 setError(data.message || 'Une erreur est survenue');
             }
-        } catch (error) {
+        } catch {
             setError('Erreur de connexion au serveur');
         } finally {
             setLoading(false);
