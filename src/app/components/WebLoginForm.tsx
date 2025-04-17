@@ -18,7 +18,7 @@ export default function SignInForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [, setErrorMessage] = useState("");
   const { setIsLoggedIn } = useAuth();
 
   
@@ -248,7 +248,7 @@ export default function SignInForm() {
            </div>  
             {/* Créer un compte */}
             <div className="create-account">
-              <p>Vous n'êtes pas un membre?</p>
+              <p>Vous n’êtes pas un membre?</p>
               <Link href="/sign-up">
                 Créer un compte
               </Link>

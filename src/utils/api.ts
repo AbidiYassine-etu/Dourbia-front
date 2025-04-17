@@ -1,4 +1,3 @@
-import { useRouter } from 'next/navigation';
 
 export const api = {
   async fetch(url: string, options: RequestInit = {}) {
@@ -41,7 +40,7 @@ export const api = {
               };
               return fetch(`http://localhost:8000${url}`, options);
             }
-          } catch (error) {
+          } catch {
             // Si le refresh échoue, déconnecter l'utilisateur
             localStorage.removeItem('token');
             localStorage.removeItem('refreshToken');

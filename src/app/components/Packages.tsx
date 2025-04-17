@@ -58,8 +58,8 @@ const Packages = () => {
       image: '/img/pack5.png',
       title: (
         <>
-          PACK vélo
-          <br /> jOURNéecomlète
+          Pack vélo
+          <br /> journée complète
         </>
       ),
       altText: "Pack Visiteur Journée Complète", // Add string alternative
@@ -80,34 +80,6 @@ const Packages = () => {
     },
   ];
 
-  const renderStars = (rating: number) => {
-    return (
-      <div className={styles.stars}>
-        {[...Array(5)].map((_, index) => {
-          const starValue = index + 1;
-          return (
-            <span key={index} className={styles.star}>
-              <FontAwesomeIcon
-                icon={
-                  rating >= starValue
-                    ? faStar
-                    : rating >= starValue - 0.5
-                      ? faStarHalfAlt
-                      : faStar
-                }
-                className={`${styles.starIcon} ${rating >= starValue
-                  ? styles.fullStar
-                  : rating >= starValue - 0.5
-                    ? styles.halfStar
-                    : styles.emptyStar
-                  }`}
-              />
-            </span>
-          );
-        })}
-      </div>
-    );
-  };
 
   return (
     <section className={styles.packagesSection}>

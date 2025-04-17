@@ -63,14 +63,14 @@ export default function RootLayout({
 }) {
   return (
       <html lang="en">
-        <body className={inter.className}>
-          <AuthProvider>
+<body className={`${inter.variable} ${abeezee.variable} ${actor.variable} ${montserrat.variable} ${montserratLight.variable} ${montserratSemiBold.variable}`}>
+        <AuthProvider>
           <div className="min-h-screen flex flex-col">
             <Header />
               <main className="flex-grow">{children}</main>
             <Footer />
           </div>
-          </AuthProvider>
+        </AuthProvider>
       </body>
     </html>
 
